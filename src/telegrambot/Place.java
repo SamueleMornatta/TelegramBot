@@ -29,6 +29,12 @@ public class Place {
         this.village = village;
     }
 
+    @Override
+    public String toString() {
+        return "building: " + building + "\namenity: " + amenity + "\nroad: " + road + "\ntown: " + town + "\ncounty: " + county + "\nstate: " + state + "\nposcode: " + poscode + "\ncountry: " + country + "\ncountry_code: " + country_code + "\nhouse_number: " + house_number + "\nvillage: " + village;
+    }
+    
+
     public String getBuilding() {
         return building;
     }

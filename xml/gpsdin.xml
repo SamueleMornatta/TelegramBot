@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<searchresults timestamp='Tue, 01 Mar 22 11:50:22 +0000' attribution='Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright' querystring='Ravenna' exclude_place_ids='283537927' more_url='https://nominatim.openstreetmap.org/search/?q=Ravenna&amp;addressdetails=1&amp;exclude_place_ids=283537927&amp;format=xml'>
+<place place_id='283537927' osm_type='relation' osm_id='42889' place_rank='12' address_rank='12' boundingbox="44.0990967,44.6283408,11.5249381,12.3839715" lat='44.364060699999996' lon='12.059009490863945' display_name='Ravenna, Emilia-Romagna, Italia' class='boundary' type='administrative' importance='0.72815050097528' icon='https://nominatim.openstreetmap.org/ui/mapicons//poi_boundary_administrative.p.20.png'>
+<county>Ravenna</county><state>Emilia-Romagna</state><country>Italia</country><country_code>it</country_code></place></searchresults>
