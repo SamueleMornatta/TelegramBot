@@ -19,8 +19,9 @@ public class TelegramBot {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException{ 
-        TelegramAPI api = new TelegramAPI("5116821392:AAFYIDSHD7MXbUjUHmF14vA-X4qsR80VLms");
+    public static void main(String[] args) throws IOException{
+        String token = "";
+        TelegramAPI api = new TelegramAPI(token);
         ArrayList<TUpdate> list = api.getUpdates();
         for (int i = 0; i < list.size(); i++){
             System.out.println(list.get(i).getUpdate_id());
