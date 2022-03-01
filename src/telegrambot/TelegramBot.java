@@ -22,7 +22,7 @@ public class TelegramBot {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, InterruptedException, FileNotFoundException, ParserConfigurationException, SAXException {
-        String token = "5116821392:AAFYIDSHD7MXbUjUHmF14vA-X4qsR80VLms";
+        String token = "";
         TelegramAPI api = new TelegramAPI(token);
         while (true) {
             ArrayList<TUpdate> list = api.getUpdates();
