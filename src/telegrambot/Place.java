@@ -11,11 +11,12 @@ package telegrambot;
  */
 public class Place {
     String building,amenity,road,town,county,state,poscode,country,country_code,house_number,village;
+    double lat, lon;
 
     public Place() {
     }
 
-    public Place(String building, String amenity, String road, String town, String county, String state, String poscode, String country, String country_code, String house_number, String village) {
+    public Place(String building, String amenity, String road, String town, String county, String state, String poscode, String country, String country_code, String house_number, String village, int lat, int lon) {
         this.building = building;
         this.amenity = amenity;
         this.road = road;
@@ -27,6 +28,8 @@ public class Place {
         this.country_code = country_code;
         this.house_number = house_number;
         this.village = village;
+        this.lat = lat;
+        this.lon = lon;
     }
 
     @Override
@@ -121,6 +124,22 @@ public class Place {
 
     public void setVillage(String village) {
         this.village = village;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
     }
     
 }

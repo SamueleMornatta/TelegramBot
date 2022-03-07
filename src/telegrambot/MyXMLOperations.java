@@ -74,6 +74,8 @@ public class MyXMLOperations {
     
     private Place getInfo(Element element) {
         Place place = new Place();
+        place.setLat(Double.valueOf(element.getAttributes().getNamedItem("lat").getNodeValue()));
+        place.setLon(Double.valueOf(element.getAttributes().getNamedItem("lon").getNodeValue()));
         place.setBuilding(getTextValue(element, "building"));
         place.setAmenity(getTextValue(element, "amenity"));
         place.setRoad(getTextValue(element, "road"));
