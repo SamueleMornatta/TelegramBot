@@ -48,6 +48,6 @@ public class MapSearch {
     }
 
     public static String getImage(double lat, double lon) throws MalformedURLException, IOException {
-        return "https://open.mapquestapi.com/staticmap/v4/getmap?key=Fs0tM3ZhpiVMGuTwPxQ1mgcSicdAwXur&size=500,500&zoom=15&center=" + lat + "," + lon;
+        return "https://open.mapquestapi.com/staticmap/v4/getmap?key=Fs0tM3ZhpiVMGuTwPxQ1mgcSicdAwXur&size=500,500&zoom=15&center=" + lat + "," + lon + "&pois=posizione," + lat + "," + lon + ",1,1";
     }
 }
