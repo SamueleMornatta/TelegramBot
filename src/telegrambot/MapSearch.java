@@ -5,6 +5,7 @@
  */
 package telegrambot;
 
+import java.awt.Image;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -38,6 +40,14 @@ public class MapSearch {
         List<Place> dati = new ArrayList<>();
         MyXMLOperations xml = new MyXMLOperations();
         dati = xml.parseDocument(xmlFile);
-        return dati.get(0);
+        if (dati.size() > 0) {
+            return dati.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public static String getImage(double lat, double lon) throws MalformedURLException, IOException {
+        return "https://open.mapquestapi.com/staticmap/v4/getmap?key=Fs0tM3ZhpiVMGuTwPxQ1mgcSicdAwXur&size=500,500&zoom=15&center=" + lat + "," + lon;
     }
 }

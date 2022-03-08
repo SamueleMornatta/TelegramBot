@@ -6,6 +6,7 @@
 package telegrambot;
 
 import apitelegramlib.*;
+import java.awt.Image;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,25 +34,37 @@ public class TelegramBot {
                 TMessage mess = update.getMess();
                 if (mess.getText().toLowerCase().startsWith("/citta")) {
                     Place citta = MapSearch.search(mess.getText().split("/citta ")[1]);
-                    boolean exists = false;
-                    int pos = 0;
-                    for (int j = 0; j < utenti.size(); j++) {
-                        if (utenti.get(j).getIdChat().equals(mess.getChat().getId())) {
-                            exists = true;
-                            pos = j;
+                    if (citta != null) {
+
+                        boolean exists = false;
+                        int pos = 0;
+                        for (int j = 0; j < utenti.size(); j++) {
+                            if (utenti.get(j).getIdChat().equals(mess.getChat().getId())) {
+                                exists = true;
+                                pos = j;
+                            }
                         }
-                    }
-                    if (exists) {
-                        utenti.get(pos).setLat(citta.getLat());
-                        utenti.get(pos).setLat(citta.getLon());
-                        api.sendMessage(mess.getChat().getId(), "Utente aggiornato");
-                        Utils.saveUtenti("utenti.csv", utenti);
+                        if (exists) {
+                            utenti.get(pos).setLat(citta.getLat());
+                            utenti.get(pos).setLon(citta.getLon());
+                            api.sendMessage(mess.getChat().getId(), "Utente aggiornato nella seguente posizione:");
+                            api.sendPhoto(mess.getChat().getId(), MapSearch.getImage(citta.getLat(), citta.getLon()));
+                            Utils.saveUtenti("utenti.csv", utenti);
+                        } else {
+                            Utente nuovoUtente = new Utente(mess.getChat().getId(), mess.getFrom().getFirst_name(), citta.getLat(), citta.getLon());
+                            utenti.add(nuovoUtente);
+                            api.sendMessage(mess.getChat().getId(), "Utente registrato nella seguente posizione:");
+                            api.sendPhoto(mess.getChat().getId(), MapSearch.getImage(citta.getLat(), citta.getLon()));
+                            Utils.saveUtenti("utenti.csv", utenti);
+                        }
                     } else {
-                        Utente nuovoUtente = new Utente(mess.getChat().getId(), mess.getFrom().getFirst_name(), citta.getLat(), citta.getLon());
-                        utenti.add(nuovoUtente);
-                        api.sendMessage(mess.getChat().getId(), "Utente registrato");
-                        Utils.saveUtenti("utenti.csv", utenti);
+                        api.sendMessage(mess.getChat().getId(), "Errore città non esiste");
                     }
+                } else if (mess.getText().toLowerCase().startsWith("/help")) {
+                    api.sendMessage(mess.getChat().getId(), "COMANDI DISPONIBILI:"
+                            + "\n- /citta [nome citta] -> registra o aggiorna la tua posizione per ricevere pubblicità più convegnenti");
+                } else if (mess.getText().toLowerCase().startsWith("/")) {
+                    api.sendMessage(mess.getChat().getId(), "Comando non riconosciuto");
                 }
             }
             Thread.sleep(3000);
